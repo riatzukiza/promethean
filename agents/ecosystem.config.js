@@ -1,8 +1,3 @@
-const path = require('path');
-// Right now duck hosts all  the services, but as we move on this will become less and less true.
-// Most of these services could be shared between agents.
-// We are in the boot strap phase, I moved this code from another repo.
-// we're just getting it running to match pairity for now.
 
 // we have a mongodb instance running seperately from this file that the services depend on.
 // we'll figure out what to do about that in the future.
@@ -17,87 +12,35 @@ const path = require('path');
 
 module.exports = {
     apps: [
-        {
-            name: "tts",
-            cwd: ".",
-            script: "../services/tts/run.sh",
-            interpreter:"bash",
-            "exec_mode": "fork",
-            watch: ["../services/tts"],
-            instances: 1,
-            autorestart: true,
-            env: {
 
-                PYTHONPATH: path.resolve(__dirname),
-                PYTHONUNBUFFERED: "1",
-                FLASK_APP: "app.py",
-                FLASK_ENV: "production",
-            },
-            restart_delay: 10000,
-            kill_timeout: 10000 
-
-        },
         {
-            name: "stt",
-            cwd: "../services/stt",
-            script: "../services/stt/run.sh",
+            name: "duck_discord_indexer",
+            script:"./scripts/discord_indexer_run.sh",
             interpreter: "bash",
-            exec_mode: "fork",
-            watch: ["../services/stt"],
+            // "exec_mode": "fork",
             instances: 1,
             autorestart: true,
-            out_file: "../logs/stt-out.log",
-            error_file: "../logs/stt-err.log",
-            merge_logs: true,
-            env: {
-                PYTHONUNBUFFERED: "1",
-                PYTHONPATH: path.resolve(__dirname),
-            },
-
-            restart_delay: 10000,
-            kill_timeout: 10000 // wait 5s before SIGKILL
-        },
-        {
-            name: "discord_indexer",
-            cwd: ".",
-            script: "python",
-            args: "-m pipenv run python -m main",
-
-            "exec_mode": "fork",
-            watch: ["../services/discord_indexer"],
-            instances: 1,
-            autorestart: true,
-            env: {
-                PYTHONPATH: path.resolve(__dirname),
-                PYTHONUTF8: "1",
-                PYTHONUNBUFFERED: "1",
-            },
-
+            "env_file": ".env",
             restart_delay: 10000,
             kill_timeout: 10000
         },
         {
-            "name": "discord_speaker_js",
-            "watch": ["../services/discord_speaker_js/src"],
+            "name": "duck_cephalon",
             "cwd": ".",
-            "script": "src/index.ts",
-            "interpreter": "node",
-            "node_args": ["--loader", "ts-node/esm"],
+            "script":"./scripts/duck_cephalon_run.sh",
+            "interpreter": "bash",
             "autorestart": true,
             "env_file": ".env",
-
             restart_delay: 10000,
             kill_timeout: 10000 // wait 5s before SIGKILL
 
         },
         {
-            "name": "embedder",
-            "watch": ["../services/embedder/src"],
+            "name": "duck_embedder",
             "cwd": ".",
-            "interpreter": "node",
-            "script": "./src/index.ts",
+            "script":"./scripts/duck_discord_embedder.sh",
+            "interpreter": "bash",
             // "script":"./services/embedder/src/index.ts",
-            "node_args": ["--loader", "ts-node/esm"],
             "autorestart": true,
             "env_file": ".env"
 

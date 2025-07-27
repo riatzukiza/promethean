@@ -8,6 +8,19 @@ This repo defines the **Promethean Framework**, a modular cognitive architecture
 
 Promethean includes services for STT, TTS, language modeling, emotional simulation, and real-time interaction across multiple modalities and memory interfaces.
 
+We're in the process of actively migrating code from:
+https://github.com/riatzukiza/riatzukiza.github.io
+https://github.com/riatzukiza/duck/tree/2.0/versions/2_0/
+https://github.com/riatzukiza/kit-http
+https://github.com/riatzukiza/kit-js
+https://github.com/riatzukiza/electron-kit (maybe)
+https://github.com/riatzukiza/kit-events
+https://github.com/riatzukiza/kit-async
+https://github.com/riatzukiza/kit-shell
+https://github.com/riatzukiza/kit-repl
+https://github.com/riatzukiza/kit-actor
+https://github.com/riatzukiza/kit-file-system
+
 ---
 
 ## 📂 Repository Structure
