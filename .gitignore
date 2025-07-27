@@ -1,0 +1,7 @@
+node_modules/
+onnx_model/
+models/
+data/
+open_vino_modelfp16/
+pulbic/
+.env

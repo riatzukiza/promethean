@@ -1,0 +1,8 @@
+{
+  "vimMode": true,
+  "userIgnoreFilters": [
+    "node_modules/",
+    "models/"
+  ],
+  "alwaysUpdateLinks": true
+}
