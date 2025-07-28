@@ -5,3 +5,8 @@ data/
 open_vino_modelfp16/
 pulbic/
 .env
+agents/duck/chroma_data/
+
+.obsidian/
+
+.vscode/
