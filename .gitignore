@@ -3,6 +3,8 @@ node_modules/
 onnx_model/
 models/
 data/
+!data/prompts/
+!data/prompts/**
 open_vino_modelfp16/
 pulbic/
 .env
