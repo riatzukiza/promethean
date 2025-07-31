@@ -142,8 +142,8 @@ function splitSentances(text: string) {
 
 // `
 
-const defaultPrompt = readFileSync('./defaultPrompt.txt', {
-	encoding: 'utf8',
+const defaultPrompt = readFileSync('../../../data/prompts/defaultPrompt.txt', {
+        encoding: 'utf8',
 });
 
 const defaultState = JSON.parse(
