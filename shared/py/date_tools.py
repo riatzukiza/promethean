@@ -19,3 +19,14 @@ def time_ago(past: datetime, now: datetime = None) -> str:
         return f"{hours} hour{'s' if hours != 1 else ''} ago"
     else:
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def days_until(future: datetime, now: datetime | None = None) -> int:
+    """Return number of whole days from *now* until ``future``.
+
+    A negative value is returned if ``future`` is in the past relative to ``now``.
+    """
+    if now is None:
+        now = datetime.now(timezone.utc)
+    delta = future - now
+    return delta.days

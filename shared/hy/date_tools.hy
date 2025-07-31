@@ -18,3 +18,10 @@
       (format "{} hour{} ago" hours (if (!= hours 1) "s" ""))
     True
       (format "{} day{} ago" days (if (!= days 1) "s" ""))))
+
+
+(defn days-until [future &optional [now None]]
+  "Return number of days from now until `future`. Negative if in the past."
+  (setv now (or now (.now datetime timezone.utc)))
+  (setv delta (- future now))
+  delta.days)

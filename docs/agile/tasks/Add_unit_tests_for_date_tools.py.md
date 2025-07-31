@@ -1,6 +1,9 @@
 ## 🛠️ Task: Add unit tests for date_tools.py
 
 Write pytest tests covering functions in `shared/py/date_tools.py`.
+The module now exposes a helper called `days_until` for measuring the
+difference in days between two datetimes. Tests should cover this
+function alongside `time_ago`.
 
 ---
 
