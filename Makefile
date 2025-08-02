@@ -74,6 +74,9 @@ stop-%:
 board-sync:
 	python scripts/github_board_sync.py
 
+consolidate-tasks:
+	python scripts/consolidate_tasks.py
+
 kanban-from-tasks:
 	python scripts/hashtags_to_kanban.py > docs/agile/boards/kanban.md
 
