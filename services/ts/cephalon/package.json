@@ -8,7 +8,7 @@
 		"build": "tsc && node scripts/patch-imports.js",
 		"start": "node dist/src/index.js",
 		"test": "npm run build && ava",
-		"coverage": "npm run build && c8 ava",
+                "coverage": "npm run build && c8 --check-coverage --lines=0 ava",
 		"build:check": "tsc --noEmit --incremental false",
 		"deploy": "npm run build && node --env-file=../../.env dist/util/deploy.js",
 		"lint": "prettier --cache --check . && eslint src --ext mjs,js,ts --cache",
