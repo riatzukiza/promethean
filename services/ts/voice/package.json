@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc && node scripts/patch-imports.js",
     "test": "cross-env TS_NODE_TRANSPILE_ONLY=1 ava tests/dummy.test.ts",
-    "coverage": "cross-env TS_NODE_TRANSPILE_ONLY=1 c8 ava tests/dummy.test.ts"
+    "coverage": "cross-env TS_NODE_TRANSPILE_ONLY=1 c8 --check-coverage --lines=0 ava tests/dummy.test.ts"
   },
   "dependencies": {
 

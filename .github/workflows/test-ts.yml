@@ -26,14 +26,11 @@ jobs:
       - name: Run tests
         run: make test-ts
 
-      # - name: Upload Python coverage
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: python-coverage
-      #     path: coverage.xml
+      - name: Generate coverage
+        run: make coverage-ts
 
-      # - name: Upload TS coverage
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: ts-coverage
-      #     path: coverage
+      - name: Upload TS coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: ts-coverage
+          path: services/ts/**/coverage

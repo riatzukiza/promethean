@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "ava",
-    "coverage": "c8 ava",
+    "coverage": "c8 --check-coverage --lines=30 ava",
     "build": "echo 'no build step'"
   },
   "dependencies": {
