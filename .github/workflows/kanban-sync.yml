@@ -1,30 +1,30 @@
-name: Kanban Sync to GitHub Issues
+name: Rheos Board Check
 
 on:
+  pull_request:
+    paths:
+      - "kanban/**"
+      - ".github/workflows/kanban-sync.yml"
   push:
     branches: [main]
     paths:
-      - 'kanban/**'
+      - "kanban/**"
+      - ".github/workflows/kanban-sync.yml"
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "3 14 * * *"
   workflow_dispatch:
-    inputs:
-      dry_run:
-        description: "Dry run (do not create/update issues)"
-        required: false
-        default: "false"
-        type: boolean
 
 permissions:
   contents: read
-  issues: write
 
 jobs:
-  kanban-sync:
-    uses: open-hax/eta-mu/.github/workflows/kanban-sync.yml@main
+  rheos-board-check:
+    permissions:
+      contents: read
+    uses: open-hax/eta-mu/.github/workflows/rheos-board-check.yml@1af6746673b78000b690bfff773af0db10735566
     with:
+      eta-mu-ref: 1af6746673b78000b690bfff773af0db10735566
       tasks-dir: kanban
-      dry-run: ${{ github.event.inputs.dry_run == 'true' }}
-      max-writes: 50
-      write-delay-ms: 1000
-    secrets: inherit
+      min-tasks: 1
+      fail-on-drift: true
+      artifact-name: promethean-rheos-board-check
